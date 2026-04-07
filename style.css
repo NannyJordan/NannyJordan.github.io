@@ -170,6 +170,21 @@ a:hover { color: var(--clr-primary-dark); }
   background: linear-gradient(165deg, var(--clr-primary-light) 0%, var(--clr-bg) 40%, var(--clr-accent-light) 100%);
 }
 
+.hero-photo {
+  width: 180px;
+  height: 180px;
+  margin: 0 auto 28px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 4px solid var(--clr-surface);
+  box-shadow: var(--shadow-lg);
+}
+.hero-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 .hero-tagline {
   display: inline-block;
   background: var(--clr-primary);
@@ -193,7 +208,7 @@ a:hover { color: var(--clr-primary-dark); }
 }
 
 .hero-sub {
-  max-width: 560px;
+  max-width: 580px;
   margin: 0 auto 36px;
   font-size: 1.1rem;
   color: var(--clr-text-light);
@@ -235,7 +250,7 @@ a:hover { color: var(--clr-primary-dark); }
 
 .about-grid {
   display: grid;
-  grid-template-columns: 1fr 340px;
+  grid-template-columns: 1fr 300px;
   gap: 48px;
   align-items: start;
   margin-top: 40px;
@@ -265,24 +280,14 @@ a:hover { color: var(--clr-primary-dark); }
   font-weight: 700;
 }
 
-.about-card {
-  background: var(--clr-primary-light);
+.about-photo {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.about-photo img {
   border-radius: var(--radius);
-  padding: 36px 28px;
-  text-align: center;
-}
-.card-icon {
-  font-size: 2.4rem;
-  margin-bottom: 12px;
-}
-.about-card h3 {
-  font-size: 1.15rem;
-  margin-bottom: 12px;
-  color: var(--clr-primary-dark);
-}
-.about-card p {
-  font-size: .95rem;
-  color: var(--clr-text-light);
+  box-shadow: var(--shadow-sm);
 }
 
 /* ===== Why Jordan ===== */
@@ -363,6 +368,31 @@ a:hover { color: var(--clr-primary-dark); }
   line-height: 1.7;
 }
 
+/* ===== Gallery ===== */
+.gallery {
+  background: var(--clr-bg);
+  padding: 60px 0;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.gallery-grid img {
+  border-radius: var(--radius);
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+}
+.gallery-grid img:hover {
+  transform: scale(1.02);
+  box-shadow: var(--shadow-md);
+}
+
 /* ===== Testimonials ===== */
 .testimonials {
   background: var(--clr-accent-light);
@@ -370,7 +400,7 @@ a:hover { color: var(--clr-primary-dark); }
 
 .testimonials-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: 1fr 1fr;
   gap: 28px;
   margin-top: 48px;
 }
@@ -381,6 +411,11 @@ a:hover { color: var(--clr-primary-dark); }
   padding: 32px 28px;
   box-shadow: var(--shadow-sm);
   border: none;
+}
+
+.testimonial.featured {
+  grid-column: 1 / -1;
+  border-left: 4px solid var(--clr-primary);
 }
 
 .testimonial p {
@@ -430,6 +465,10 @@ a:hover { color: var(--clr-primary-dark); }
   color: var(--clr-primary);
 }
 
+.contact-cta {
+  text-align: center;
+  margin-top: 40px;
+}
 
 /* ===== Footer ===== */
 .footer {
@@ -442,12 +481,18 @@ a:hover { color: var(--clr-primary-dark); }
 
 /* ===== Responsive ===== */
 @media (max-width: 900px) {
-  .reasons-grid,
-  .testimonials-grid {
+  .reasons-grid {
     grid-template-columns: repeat(2, 1fr);
   }
   .about-grid {
     grid-template-columns: 1fr;
+  }
+  .about-photo {
+    flex-direction: row;
+  }
+  .about-photo img {
+    flex: 1;
+    min-width: 0;
   }
 }
 
@@ -484,16 +529,21 @@ a:hover { color: var(--clr-primary-dark); }
   .mobile-toggle { display: flex; }
 
   .reasons-grid,
-  .testimonials-grid,
   .services-grid,
-  .contact-grid {
+  .contact-details,
+  .gallery-grid {
     grid-template-columns: 1fr;
   }
 
-  .contact-details {
+  .testimonials-grid {
     grid-template-columns: 1fr;
+  }
+
+  .about-photo {
+    flex-direction: column;
   }
 
   .hero h1 { font-size: 2rem; }
   .section { padding: 64px 0; }
+  .gallery { padding: 40px 0; }
 }
